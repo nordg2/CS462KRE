@@ -21,7 +21,20 @@ ruleset alert {
         pre {
             query = page:url("query");
         }
-        notify("note", query);
+        if query neq "" then every {
+            notify("Hello", query) with position = 'bottom-left';
+        }
+        if query eq "" then every {
+            notify("Hello", "Hello Monkey") with position = 'bottom-left';
+        }
 
     }
 }
+
+
+
+
+
+
+
+
