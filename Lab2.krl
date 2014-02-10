@@ -12,5 +12,6 @@ ruleset alert {
         // Display notification that will not fade.
         notify("Notify 1", "This is my first notify!") with sticky = false;
         notify("Notify 2", "This is my second notify!") with sticky = false;
+        notify("Notify 3", "This is my third notify!") with sticky = false;
     }
 }
