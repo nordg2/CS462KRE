@@ -22,7 +22,7 @@ ruleset alert {
             query = page:url("query");
             a = query.extract(re/(name=([^&]*))/);
         }
-            notify("Hello", a[0] || "Hello Monkey") with position = 'bottom-left';
+            notify("Hello", a[1] || "Hello Monkey") with position = 'bottom-left';
  
     }
 }
