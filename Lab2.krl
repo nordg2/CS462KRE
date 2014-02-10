@@ -10,6 +10,7 @@ ruleset alert {
     rule first_rule {
         select when pageview ".*" setting ()
         // Display notification that will not fade.
-        notify("Hello World", "This is a sample rule.") with sticky = false;
+        notify("Notify 1", "This is my first notify!") with sticky = false;
+        notify("Notify 2", "This is my second notify!") with sticky = false;
     }
 }
