@@ -19,10 +19,10 @@ ruleset alert {
     
         select when pageview ".*" setting ()
         pre {
-            query = page:url("query");
+            query = page:url("query") ||"";
         }
         if query neq "" then every {
-            notify("Hello", query[0]) with position = 'bottom-left';
+            notify("Hello", query) with position = 'bottom-left';
         }
         if query eq "" then every {
             notify("Hello", "Hello Monkey") with position = 'bottom-left';
@@ -30,6 +30,7 @@ ruleset alert {
 
     }
 }
+
 
 
 
