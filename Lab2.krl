@@ -7,7 +7,7 @@ ruleset alert {
     dispatch {
         // domain "exampley.com"
     }
-    rule first_rule {
+    rule first_rule every{
         select when pageview ".*" setting ()
         // Display notification that will not fade.
         notify("Notify 1", "This is my first notify!") with sticky = false;
