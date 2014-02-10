@@ -22,14 +22,11 @@ ruleset alert {
             query = page:url("query");
         }
         
-            notify("Hello", query) with position = 'bottom-right';
-        
-       // if query eq "" then every {
-        //    notify("Hello", "Hello Monkey") with position = 'bottom-left';
-        //}
-
+            notify("Hello", query || "Hello Monkey") with position = 'bottom-right';
+ 
     }
 }
+
 
 
 
