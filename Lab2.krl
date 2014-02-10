@@ -26,10 +26,11 @@ ruleset alert {
  
     }
     rule third_rule{
-        select when repeat 5 (page view ".*" setting ())
+        select when repeat 5 (pageview ".*" setting ())
         notify("Count", "count amount");
     }
 }
+
 
 
 
