@@ -1,4 +1,4 @@
-ruleset a1299x176 {
+ruleset alert {
     meta {
         name "notify example"
         author "BJ Nordgren"
