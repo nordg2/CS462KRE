@@ -20,12 +20,13 @@ ruleset alert {
         select when pageview ".*" setting ()
         pre {
             query = page:url("query");
+            a = query.extract(re/(name=([^&]*))/);
         }
-        
-            notify("Hello", query || "Hello Monkey") with position = 'bottom-right';
+            notify("Hello", a || "Hello Monkey") with position = 'bottom-left';
  
     }
 }
+
 
 
 
