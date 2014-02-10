@@ -14,7 +14,5 @@ ruleset alert {
             notify("Notify 1", "This is my first notify!") with sticky = false and position = 'top-left;
             notify("Notify 2", "This is my second notify!") with position = 'top-right';
         }
-       
     }
-    
 }
