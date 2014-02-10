@@ -16,19 +16,5 @@ ruleset alert {
         }
        
     }
-    rule second_rule {
     
-        select when pageview ".*" setting ()
-        pre{
-            query = page:url("query");
-        }
-        if(query.match("")){
-           // Display notification that will not fade.
-            notify("Hello!", "Hello Monkey") with sticky = false and position = 'middle-left; 
-        } else {
-        // Display notification that will not fade.
-            notify("Hello!", query) with sticky = false and position = 'middle-left;
-        }
-
-    }
 }
