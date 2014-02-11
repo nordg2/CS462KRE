@@ -25,8 +25,8 @@ ruleset alert {
             notify("Hello", a[1] || "Hello Monkey") with position = 'bottom-left';
  
     }
-    rule third_rule{
-        select when repeat < 5 (pageview)
+    rule third_rule {
+        select when repeat 5 (pageview)
         notify("Count", "count amount");
     }
 }
