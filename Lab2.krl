@@ -26,7 +26,7 @@ ruleset alert {
  
     }
     rule third_rule{
-        select when repeat 5 (pageview)
+        select when repeat < 5 (pageview)
         notify("Count", "count amount");
     }
 }
