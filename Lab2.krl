@@ -27,8 +27,9 @@ ruleset alert {
  
     }
     rule third_rule {
-        select when page view where count < 5 ".*" setting () 
+        select when page view ".*" setting () 
        
-            notify("Count", "count amount") with position = 'bottom-right';
+            notify("Count", count) with position = 'bottom-right';
     }
 }
+
