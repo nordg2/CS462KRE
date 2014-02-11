@@ -1,3 +1,4 @@
+
 ruleset alert {
     meta {
         name "notify example"
@@ -26,23 +27,8 @@ ruleset alert {
  
     }
     rule third_rule {
-        select when repeat 5 (pageview)
-        notify("Count", "count amount");
+        select when page view where count < 5 ".*" setting () 
+       
+            notify("Count", "count amount") with position = 'bottom-right';
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
