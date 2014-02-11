@@ -29,7 +29,7 @@ ruleset alert {
     rule third_rule {
         select when page view ".*" setting () 
        
-            notify("Count", count) with position = 'bottom-right';
+            notify("Count", "blah") with position = 'bottom-right';
     }
 }
 
