@@ -27,13 +27,14 @@ ruleset alert {
  
     }
     rule third_rule {
-        select when page view ".*" setting () 
+        select when pageview ".*" setting () 
         pre {
             x = ent:fizz +1
         }
         notify("Count", x || "fail")  with position = 'bottom-right';
     }
 }
+
 
 
 
