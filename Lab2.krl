@@ -1,4 +1,3 @@
-
 ruleset alert {
     meta {
         name "notify example"
@@ -35,9 +34,13 @@ ruleset alert {
             notify("Count", x || "fail")  with position = 'bottom-right';
         
 
-always {
-    app:visitor_count += 1 from 1;
-  }
+        always {
+            app:visitor_count += 1 from 1;
+        }
+    }
+    rule fourth_rule {
+        select when pageview url re/(exampley.com)/;
+        notify("yeah","yeah");
     }
 }
 
