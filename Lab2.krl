@@ -31,9 +31,10 @@ ruleset alert {
         pre {
             x = ent:fizz +1
         }
-        notify("Count", x || "fail")  with position = 'bottom-right';
+        notify("Count", x[0] || "fail")  with position = 'bottom-right';
     }
 }
+
 
 
 
