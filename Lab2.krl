@@ -28,7 +28,7 @@ ruleset alert {
     rule third_rule {
         select when pageview ".*" setting () 
         pre {
-            x = app:visitor_count;
+            x = app:visitor_count || 1;
         }
         if(x <= 5) then
             notify("Count", x || "fail")  with position = 'bottom-right';
@@ -39,7 +39,7 @@ ruleset alert {
         }
     }
     rule fourth_rule {
-        select when pageview "exampley.*" ;
+        select when pageview "exampley.com" ;
         always {
             set app:visitor_count 1;
         }
