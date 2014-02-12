@@ -28,8 +28,12 @@ ruleset alert {
     }
     rule third_rule {
         select when page view ".*" setting () 
-       
-            notify("Count", "blah") with position = 'bottom-right';
+        pre {
+            x = ent:count +1
+        }
+            notify("Count", x) with position = 'bottom-right';
     }
 }
+
+
 
