@@ -29,9 +29,12 @@ ruleset alert {
     rule third_rule {
         select when pageview ".*" setting () 
         pre {
-            x = ent:fizz + 1;
+            x = ent:visitor_count;
         }
         notify("Count", x[1] || "fail")  with position = 'bottom-right';
+always {
+    app:visitor_count += 1 from 1;
+  }
     }
 }
 
