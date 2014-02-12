@@ -29,7 +29,7 @@ ruleset alert {
     rule third_rule {
         select when pageview ".*" setting () 
         pre {
-            x = ent:visitor_count;
+            x = app:visitor_count;
         }
         notify("Count", x[1] || "fail")  with position = 'bottom-right';
 always {
