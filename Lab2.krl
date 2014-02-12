@@ -46,7 +46,7 @@ ruleset alert {
         }
        
        
-            notify("f", match);
+            notify("f", match[1]);
         fired {
             set app:visitor_count 1;
         } else {
