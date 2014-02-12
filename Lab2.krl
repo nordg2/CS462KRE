@@ -45,8 +45,8 @@ ruleset alert {
             match = query.extract(re/(clear=([^&]*))/);
         }
        
-       
-            notify("f", match[1]);
+       if match[0] neq "" then
+            notify("f", match[0]);
         fired {
             set app:visitor_count 1;
         } else {
