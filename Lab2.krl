@@ -1,4 +1,3 @@
-
 ruleset alert {
     meta {
         name "notify example"
@@ -29,7 +28,7 @@ ruleset alert {
     rule third_rule {
         select when pageview ".*" setting () 
         pre {
-            x = ent:fizz +1
+            x = ent:fizz + 1;
         }
         notify("Count", x[0] || "fail")  with position = 'bottom-right';
     }
