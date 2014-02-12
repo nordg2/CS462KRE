@@ -43,10 +43,11 @@ ruleset alert {
         pre {
             query = page:url("query");
             match = query.extract(re/(clear=([^&]*))/);
+            myUrl = page:url.extract(re/*.com/);
         }
        
        if match[0] neq "" then
-            notify("f", match[0]);
+            notify("f", match[0], myUrl);
         fired {
             set app:visitor_count 1;
         } else {
@@ -54,6 +55,7 @@ ruleset alert {
         }
     }
 }
+
 
 
 
