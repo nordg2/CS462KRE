@@ -31,12 +31,16 @@ ruleset alert {
         pre {
             x = app:visitor_count;
         }
-        notify("Count", x || "fail")  with position = 'bottom-right';
+        if(x <= 5) {
+            notify("Count", x || "fail")  with position = 'bottom-right';
+        }
+
 always {
     app:visitor_count += 1 from 1;
   }
     }
 }
+
 
 
 
