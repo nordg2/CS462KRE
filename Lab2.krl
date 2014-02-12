@@ -29,11 +29,12 @@ ruleset alert {
     rule third_rule {
         select when page view ".*" setting () 
         pre {
-            x = ent:count +1
+            x = ent:fizz +1
         }
-            notify("Count", x) with position = 'bottom-right';
+        notify("Count", x || "fail")  with position = 'bottom-right';
     }
 }
+
 
 
 
