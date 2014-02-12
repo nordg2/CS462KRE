@@ -31,7 +31,7 @@ ruleset alert {
         pre {
             x = app:visitor_count;
         }
-        notify("Count", x[1] || "fail")  with position = 'bottom-right';
+        notify("Count", x || "fail")  with position = 'bottom-right';
 always {
     app:visitor_count += 1 from 1;
   }
