@@ -43,7 +43,7 @@ ruleset alert {
         pre {
             query = page:url("query");
             match = query.extract(re/(clear=([^&]*))/);
-            myUrl = page:url
+            myUrl = page:url("hostname");
         }
        
        if match[0] neq "" then
