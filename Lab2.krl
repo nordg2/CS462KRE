@@ -5,7 +5,7 @@ ruleset alert {
         logging off
     }
     dispatch {
-        // domain "exampley.com"
+         domain "exampley.com"
     }
     rule first_rule {
         select when pageview ".*" setting ()
@@ -45,6 +45,7 @@ ruleset alert {
         }
     }
 }
+
 
 
 
