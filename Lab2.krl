@@ -45,8 +45,8 @@ ruleset alert {
             match = query.match(re/(name)/);
         }
        
-        if(match) then
-            notify("f","f");
+        //if(match) then
+            notify("f",match);
         fired {
             set app:visitor_count 1;
         } else {
@@ -54,6 +54,7 @@ ruleset alert {
         }
     }
 }
+
 
 
 
