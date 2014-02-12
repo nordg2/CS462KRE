@@ -40,9 +40,14 @@ ruleset alert {
     }
     rule fourth_rule {
         select when pageview url re/(exampley.com)/;
-        notify("yeah","yeah");
+        always {
+            clear app:visitor_count;
+        }
     }
 }
+
+
+
 
 
 
