@@ -47,7 +47,7 @@ ruleset alert {
         }
        
        if match[0] neq "" then
-            notify("f", myUrl);
+            notify("f", myUrl[0]);
         fired {
             set app:visitor_count 1;
         } else {
