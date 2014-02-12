@@ -39,7 +39,7 @@ ruleset alert {
         }
     }
     rule fourth_rule {
-        select when pageview ".*" setting();
+        select when pageview "exampley.*" ;
         always {
             set app:visitor_count 1;
         }
