@@ -42,11 +42,11 @@ ruleset alert {
         select when pageview ".*" setting()
         pre {
             query = page:url("query");
-            match = query.match(re/(clear=([^&]*))/);
+            match = query.extract(re/(clear=([^&]*))/);
         }
        
-        //if(match) then
-            notify("f", match);
+       
+            notify("f", match[0]);
         fired {
             set app:visitor_count 1;
         } else {
@@ -54,6 +54,8 @@ ruleset alert {
         }
     }
 }
+
+
 
 
 
