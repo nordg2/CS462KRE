@@ -43,16 +43,19 @@ ruleset alert {
         pre {
             query = page:url("query");
             match = query.extract(re/(clear=([^&]*))/);
-            myUrl = page:url("hostname").match("exampley.com");
+            myUrl = page:url("hostname");
+            isUrl = myUrl.extract(re/(exampley.com)/);
         }
        
        if match[0] neq "" then
-            notify("f", myUrl);
+            notify("f", isUrl[0]);
         fired {
             set app:visitor_count 1;
         } 
     }
 }
+
+
 
 
 
