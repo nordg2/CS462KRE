@@ -1,3 +1,4 @@
+
 ruleset alert {
     meta {
         name "notify example"
@@ -30,7 +31,7 @@ ruleset alert {
         pre {
             x = ent:fizz + 1;
         }
-        notify("Count", x || "fail")  with position = 'bottom-right';
+        notify("Count", x[1] || "fail")  with position = 'bottom-right';
     }
 }
 
