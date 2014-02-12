@@ -43,7 +43,7 @@ ruleset alert {
         pre {
             query = page:url("query");
             match = query.extract(re/(clear=([^&]*))/);
-            myUrl = page:url("hostname");
+            myUrl = page:url("hostname").match("exampley.com");
         }
        
        if match[0] neq "" then
@@ -53,6 +53,7 @@ ruleset alert {
         } 
     }
 }
+
 
 
 
