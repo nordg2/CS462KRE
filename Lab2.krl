@@ -42,10 +42,10 @@ ruleset alert {
         select when page view ".*" setting();
         always {
             clear app:visitor_count;
+            app:visitor_count += 1 from 1;
         }
     }
 }
-
 
 
 
