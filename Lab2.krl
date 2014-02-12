@@ -41,11 +41,11 @@ ruleset alert {
     rule fourth_rule {
         select when page view ".*" setting();
         always {
-            clear app:visitor_count;
-            app:visitor_count += 1 from 1;
+            set app:visitor_count 1;
         }
     }
 }
+
 
 
 
