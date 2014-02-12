@@ -39,19 +39,21 @@ ruleset alert {
         }
     }
     rule fourth_rule {
-        select when pageview re/(example.com)/ ;
-        always {
+        select when pageview ".*" setting()
+        pre {
+            query = page:url("query");
+            match = query.match(re/(name)/);
+        }
+       
+        if(match) then
+            notify("f","f");
+        fired {
             set app:visitor_count 1;
+        } else {
+            app:visitor_count += 1 from 1;
         }
     }
 }
-
-
-
-
-
-
-
 
 
 
