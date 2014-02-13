@@ -1,4 +1,3 @@
-
 ruleset alert {
     meta {
         name "notify example"
