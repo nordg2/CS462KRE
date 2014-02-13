@@ -46,9 +46,9 @@ ruleset alert {
             a1 = query1.extract(re/(clear([^&]*))/);
         }
        if a1[0] neq "" then
-             notify("","");
+             notify("Cleared","")
         fired {
-             clear app:visitor_count if a1[0] neq "";
+             clear app:visitor_count;
         }   
     }
 }
