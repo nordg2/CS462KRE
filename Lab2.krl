@@ -44,7 +44,7 @@ ruleset alert {
           
         pre {
             query1 = page:url("query");
-            a1 = query.extract(re/(clear)/);
+            a1 = query.extract(re/(clear([^&]*))/);
         }
 notify(a1[0],a1[1]);
         if a1[0] neq "" then
