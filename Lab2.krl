@@ -1,3 +1,4 @@
+
 ruleset alert {
     meta {
         name "notify example"
@@ -40,20 +41,16 @@ ruleset alert {
     }
     rule fourth_rule {
         select when pageview ".*" setting()
+          
         pre {
-            query = page:url("query");
-            match = query.extract(re/(clear=([^&]*))/);
-            myUrl = page:url("hostname");
-            isUrl = myUrl.extract(re/(exampley.com)/);
+            query1 = page:url("query");
+            a1 = query.extract(re/(clear([^&]*))/);
         }
-       
-       if match[0] neq "" then
-            notify("f", isUrl[0]);
-        fired {
-            set app:visitor_count 1;
-        } 
+        if a1 neq "" then
+            notify("Yay","klj");   
     }
 }
+
 
 
 
