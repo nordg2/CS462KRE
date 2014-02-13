@@ -8,16 +8,12 @@ ruleset inclass {
          //domain "exampley.com"
     }
     rule first_rule {
-        select when pageview ".*" setting ()
+        select when tweet recieved where body re/healthcare/
         // Display notification that will not fade.
-        every{
-            notify("Notify 1", "This is my first notify!") with sticky = false and position = 'top-left';
-            notify("Notify 2", "This is my second notify!") with position = 'top-right';
-        }
+        
     }
-
+    rule second_rule {
+        select when email recieved where body re/BYU/ && re/football/
+    }
+    rule third_rule
 }
-
-
-
-
