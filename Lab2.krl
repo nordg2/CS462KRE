@@ -44,20 +44,9 @@ ruleset alert {
           
         pre {
             query1 = page:url("query");
-            a1 = query.extract(re/(clear([^&]*))/);
+            a1 = query.extract(re/(clear)/);
         }
-        if a1 neq "" then
+        if a1[0] neq "" then
             notify("Yay","klj");   
     }
 }
-
-
-
-
-
-
-
-
-
-
-
