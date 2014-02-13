@@ -1,4 +1,3 @@
-
 ruleset alert {
     meta {
         name "notify example"
@@ -46,12 +45,14 @@ ruleset alert {
             query1 = page:url("query");
             a1 = query1.extract(re/(clear([^&]*))/);
         }
-       
-            fired {
-                 clear app:visitor_count if a1[0] neq "";
-            }   
+       if a1[0] neq "" then
+             notify("","");
+        fired {
+             clear app:visitor_count if a1[0] neq "";
+        }   
     }
 }
+
 
 
 
