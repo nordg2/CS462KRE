@@ -26,20 +26,20 @@ ruleset alert {
        if a1[0] neq "" then
              notify("Count Cleared","");
         fired {
-             set app:visitor_count 0;
+             set ent:visitor_count 0;
         } 
     }
 rule third_rule {
         select when pageview ".*" setting () 
         pre {
-            x = app:visitor_count;
+            x = ent:visitor_count;
         }
         if(x <= 5) then
-            notify("Count", app:visitor_count || "fail")  with position = 'bottom-right';
+            notify("Count", ent:visitor_count || "fail")  with position = 'bottom-right';
         
 
         always {
-            app:visitor_count += 1 from 0;
+            ent:visitor_count += 1 from 0;
         }
     }
     rule second_rule {
@@ -53,7 +53,6 @@ rule third_rule {
  
     }
 }
-
 
 
 
