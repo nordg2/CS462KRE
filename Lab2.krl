@@ -28,8 +28,9 @@ ruleset alert {
     rule third_rule {
         select when pageview ".*" setting () 
         pre {
-            x = app:visitor_count || 1;
+            x = app:visitor_count;
         }
+every{notify(x,"d");}
         if(x <= 5) then
             notify("Count", x || "fail")  with position = 'bottom-right';
         
@@ -54,6 +55,7 @@ ruleset alert {
         } 
     }
 }
+
 
 
 
