@@ -39,7 +39,7 @@ rule third_rule {
         
 
         always {
-            app:visitor_count += 1 from 1;
+            app:visitor_count += 1 from 0;
         }
     }
     rule second_rule {
@@ -53,3 +53,6 @@ rule third_rule {
  
     }
 }
+
+
+
