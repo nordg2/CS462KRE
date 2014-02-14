@@ -5,7 +5,7 @@ ruleset alert {
         logging off
     }
     dispatch {
-         domain "exampley.com"
+         //domain "exampley.com"
     }
     rule first_rule {
         select when pageview ".*" setting ()
@@ -49,9 +49,14 @@ ruleset alert {
              notify("Cleared","")
         fired {
              clear app:visitor_count;
-        }   
+        }  else {
+            set app:visitor_count 5;
+        } 
     }
 }
+
+
+
 
 
 
