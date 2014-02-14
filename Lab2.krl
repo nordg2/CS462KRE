@@ -50,10 +50,11 @@ ruleset alert {
         fired {
              clear app:visitor_count;
         }  else {
-            set app:visitor_count 5;
+            set app:visitor_count 3;
         } 
     }
 }
+
 
 
 
