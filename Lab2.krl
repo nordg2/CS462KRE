@@ -48,12 +48,13 @@ ruleset alert {
        if a1[0] neq "" then
              notify("Cleared","")
         fired {
-             clear app:visitor_count;
+             set app:visitor_count 1;
         }  else {
             set app:visitor_count 3;
         } 
     }
 }
+
 
 
 
