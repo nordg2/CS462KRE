@@ -31,7 +31,7 @@ ruleset alert {
             x = app:visitor_count;
         }
         if(x <= 5) then
-            notify("Count", x || "fail")  with position = 'bottom-right';
+            notify("Count", app:visitor_count || "fail")  with position = 'bottom-right';
         
 
         always {
@@ -46,21 +46,9 @@ ruleset alert {
             a1 = query1.extract(re/(clear([^&]*))/);
         }
        if a1[0] neq "" then
-             notify("Cleared","")
+             notify("Cleared","");
         fired {
              set app:visitor_count 1;
         } 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
