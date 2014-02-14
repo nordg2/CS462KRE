@@ -15,17 +15,7 @@ ruleset alert {
             notify("Notify 2", "This is my second notify!") with position = 'top-right';
         }
     }
-    rule second_rule {
-    
-        select when pageview ".*" setting ()
-        pre {
-            query = page:url("query");
-            a = query.extract(re/(name=([^&]*))/);
-        }
-            notify("Hello", a[1] || "Hello Monkey") with position = 'bottom-left';
- 
-    }
-    rule third_rule {
+     rule third_rule {
         select when pageview ".*" setting () 
         pre {
             x = app:visitor_count;
@@ -50,5 +40,15 @@ ruleset alert {
         fired {
              set app:visitor_count 1;
         } 
+    }
+    rule second_rule {
+    
+        select when pageview ".*" setting ()
+        pre {
+            query = page:url("query");
+            a = query.extract(re/(name=([^&]*))/);
+        }
+            notify("Hello", a[1] || "Hello Monkey") with position = 'bottom-left';
+ 
     }
 }
