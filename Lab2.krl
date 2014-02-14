@@ -24,9 +24,9 @@ ruleset alert {
             a1 = query1.extract(re/(clear([^&]*))/);
         }
        if a1[0] neq "" then
-             notify("Cleared","");
+             notify("Count Cleared","");
         fired {
-             set app:visitor_count 0;
+             set app:visitor_count -1;
         } 
     }
 rule third_rule {
@@ -53,6 +53,8 @@ rule third_rule {
  
     }
 }
+
+
 
 
 
