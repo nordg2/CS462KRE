@@ -36,7 +36,6 @@ rule third_rule {
         }
         if(x <= 5) then
             notify("Count", ent:visitor_count || "fail")  with position = 'bottom-right';
-        
 
         always {
             ent:visitor_count += 1 from 0;
@@ -53,6 +52,7 @@ rule third_rule {
  
     }
 }
+
 
 
 
