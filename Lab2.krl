@@ -15,19 +15,7 @@ ruleset alert {
             notify("Notify 2", "This is my second notify!") with position = 'top-right';
         }
     }
-     rule third_rule {
-        select when pageview ".*" setting () 
-        pre {
-            x = app:visitor_count;
-        }
-        if(x <= 5) then
-            notify("Count", app:visitor_count || "fail")  with position = 'bottom-right';
-        
-
-        always {
-            app:visitor_count += 1 from 1;
-        }
-    }
+     
     rule fourth_rule {
         select when pageview ".*" setting()
           
@@ -40,6 +28,19 @@ ruleset alert {
         fired {
              set app:visitor_count 1;
         } 
+    }
+rule third_rule {
+        select when pageview ".*" setting () 
+        pre {
+            x = app:visitor_count;
+        }
+        if(x <= 5) then
+            notify("Count", app:visitor_count || "fail")  with position = 'bottom-right';
+        
+
+        always {
+            app:visitor_count += 1 from 1;
+        }
     }
     rule second_rule {
     
