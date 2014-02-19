@@ -46,13 +46,13 @@ ruleset alert {
         }
         replace_inner("#main", "Hello #{username}");
         fired {
-            set ent:username username;
+            set app:username username;
         }
     }
     rule replace_with_name {
         select when web pageview ".*"
         pre{
-            username = current ent:username;
+            username = current app:username;
         }
         replace_inner("#main", "Hello #{username}");
     }
@@ -66,7 +66,7 @@ ruleset alert {
        if a1[0] neq "" then
              notify("Username Cleared","");
         fired {
-             set ent:username 0;
+             set app:username 0;
         } 
     }
     
