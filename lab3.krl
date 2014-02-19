@@ -49,6 +49,13 @@ ruleset alert {
             set ent:username username;
         }
     }
+    rule replace_with_name {
+        select when web pageview ".*"
+        pre{
+            username = current ent:username;
+        }
+        replace_inner("#main", "Hello #{username}");
+    }
     
     
 }
