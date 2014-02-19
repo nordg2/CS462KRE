@@ -35,7 +35,7 @@ ruleset alert {
                 >>;
         }
         if(not ent:username) then {
-            replace_html("#main",stuff);
+            append("#main",stuff);
             watch("#myForm", "submit");
         }
     }
@@ -44,7 +44,7 @@ ruleset alert {
         pre{
             username = event:attr("first")+" "+event:attr("last");
         }
-        replace_inner("#myDiv", "Hello #{username}");
+        replace_html("#main", "Hello #{username}");
         fired {
             set ent:username username;
         }
