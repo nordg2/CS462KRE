@@ -38,6 +38,9 @@ ruleset lab3 {
             append("#main",stuff);
             watch("#myForm", "submit");
         }
+        fired {
+            last;
+        }
     }
     rule respond_submit {
         select when web submit "#myForm"
@@ -69,6 +72,7 @@ ruleset lab3 {
              notify("Username Cleared","");
         fired {
              clear app:username;
+             last
         } 
     }
     
