@@ -56,6 +56,19 @@ ruleset alert {
         }
         replace_inner("#main", "Hello #{username}");
     }
+    rule clear_rule {
+        select when pageview ".*" setting()
+          
+        pre {
+            query1 = page:url("query");
+            a1 = query1.extract(re/(clear([^&]*))/);
+        }
+       if a1[0] neq "" then
+             notify("Count Cleared","");
+        fired {
+             clear ent:username;
+        } 
+    }
     
     
 }
