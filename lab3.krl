@@ -54,7 +54,7 @@ ruleset lab3 {
         pre{
             username = app:username;
         }
-        replace_inner("#main", "Hello #{username}");
+        //replace_inner("#main", "Hello #{username}");
     }
     rule clear_rule {
         select when pageview ".*" setting()
