@@ -34,7 +34,7 @@ ruleset lab3 {
                 </form>
                 >>;
         }
-        if(not app:username) then {
+        if(not app:username || app:username == 0) then {
             append("#main",stuff);
             watch("#myForm", "submit");
         }
