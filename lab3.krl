@@ -11,7 +11,7 @@ ruleset alert {
         select when pageview ".*" setting ()
         pre {
             stuff = <<
-                <div id="myDiv"><form id=myForm">
+                <form id=myForm">
                     <table>
                         <tr>
                             <td>
@@ -31,12 +31,22 @@ ruleset alert {
                         </tr>
                     </table>
                     <input type="submit" value="Submit">
-                </form></div>
+                </form>
                 >>;
         }
         
         replace_html("#main",stuff);
         watch("#myForm", "submit");
+    }
+    rule respond_submit {
+        select when web submit "#myForm"
+        pre{
+            username = event:attr("first")+" "+event:attr("last");
+        }
+        replace_inner("#myDiv", "Hello #{username}");
+        fired {
+            set ent:username username;
+        }
     }
     
 }
