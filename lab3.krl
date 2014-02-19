@@ -66,7 +66,7 @@ ruleset lab3 {
        if a1[0] neq "" then
              notify("Username Cleared","");
         fired {
-             set app:username 0;
+             clear app:username;
         } 
     }
     
