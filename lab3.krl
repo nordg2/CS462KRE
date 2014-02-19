@@ -45,7 +45,7 @@ ruleset alert {
         }
         replace_inner("#myDiv", "Hello #{username}");
         fired {
-            set ent:username username
+            set ent:username username;
         }
     }
 }
