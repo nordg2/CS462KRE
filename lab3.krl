@@ -34,9 +34,10 @@ ruleset alert {
                 </form>
                 >>;
         }
-        
-        replace_html("#main",stuff);
-        
+        if(not ent:username) then {
+            replace_html("#main",stuff);
+            watch("#myForm", "submit");
+        }
     }
     rule respond_submit {
         select when web submit "#myForm"
