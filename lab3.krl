@@ -34,7 +34,7 @@ ruleset alert {
                 </form>
                 >>;
         }
-        if(not ent:username) then {
+        if(not app:username) then {
             append("#main",stuff);
             watch("#myForm", "submit");
         }
