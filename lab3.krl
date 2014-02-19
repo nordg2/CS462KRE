@@ -10,7 +10,29 @@ ruleset alert {
     rule show_form {
         select when pageview ".*" setting ()
         pre {
-            stuff = << <div id='iwin'><h2>This is my text</h2></div> >>;
+            stuff = <<
+                <form>
+                    <table>
+                        <tr>
+                            <td>
+                                First Name:
+                            </td>
+                            <td>
+                                <input name="first"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Last Name:
+                            </td>
+                            <td>
+                                <input name="last"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="Submit">
+                </form>
+                >>;
         }
         
         replace_html("#main",stuff);
