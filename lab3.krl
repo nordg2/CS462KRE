@@ -44,7 +44,7 @@ ruleset lab3 {
         pre{
             username = event:attr("first")+" - "+event:attr("last");
         }
-        replace_inner("#main", "Hello #{username}");
+        replace_inner("#main", "Hell #{username}");
         fired {
             set app:username username;
         }
