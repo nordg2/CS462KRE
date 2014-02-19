@@ -26,7 +26,7 @@ ruleset alert {
        if a1[0] neq "" then
              notify("Count Cleared","");
         fired {
-             set app:visitor_count 0;
+             clear app:visitor_count;
         } 
     }
 rule third_rule {
