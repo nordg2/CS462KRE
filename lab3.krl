@@ -64,9 +64,9 @@ ruleset alert {
             a1 = query1.extract(re/(clear([^&]*))/);
         }
        if a1[0] neq "" then
-             notify("Count Cleared","");
+             notify("Username Cleared","");
         fired {
-             clear ent:username;
+             set ent:username 0;
         } 
     }
     
