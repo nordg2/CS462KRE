@@ -44,7 +44,7 @@ ruleset alert {
         pre{
             username = event:attr("first")+" "+event:attr("last");
         }
-        replace_html("#main", "Hello #{username}");
+        replace_inner("#main", "Hello #{username}");
         fired {
             set ent:username username;
         }
