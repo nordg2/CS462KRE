@@ -11,7 +11,7 @@ ruleset alert {
         select when pageview ".*" setting ()
         pre {
             stuff = <<
-                <form id=myForm">
+                <form id=myForm" onsubmit='return false'>
                     <table>
                         <tr>
                             <td>
