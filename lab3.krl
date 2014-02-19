@@ -36,7 +36,17 @@ ruleset alert {
         }
         
         replace_html("#main",stuff);
-        watch("#myForm", "submit");
+        
+    }
+    rule respond_submit {
+        select when web submit "#myForm"
+        pre{
+            username = event:attr("first")+" "+event:attr("last");
+        }
+        replace_inner("#myDiv", "Hello #{username}");
+        fired {
+            set ent:username username;
+        }
     }
     
     
