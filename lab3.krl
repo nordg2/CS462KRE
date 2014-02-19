@@ -1,4 +1,4 @@
-ruleset alert {
+ruleset lab3 {
     meta {
         name "notify example"
         author "BJ Nordgren"
@@ -52,7 +52,7 @@ ruleset alert {
     rule replace_with_name {
         select when web pageview ".*"
         pre{
-            username = current app:username;
+            username = app:username;
         }
         replace_inner("#main", "Hello #{username}");
     }
