@@ -42,7 +42,7 @@ ruleset alert {
     rule respond_submit {
         select when web submit "#myForm"
         pre{
-            username = event:attr("first")+" "+event:attr("last");
+            username = event:attr("first")+" - "+event:attr("last");
         }
         replace_inner("#main", "Hello #{username}");
         fired {
