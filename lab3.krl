@@ -47,7 +47,7 @@ ruleset lab3 {
         pre{
             username = "first name: " + event:attr("first")+" last name: "+event:attr("last");
         }
-        replace_inner("#main", "Hey #{username}");
+        replace_inner("#main", "#{username}");
         fired {
             set app:username username;
         }
@@ -58,7 +58,7 @@ ruleset lab3 {
             username = app:username;
         }
         if(not not app:username) then {
-            replace_inner("#main", "Hello #{username}");
+            replace_inner("#main", "#{username}");
         }
     }
     rule clear_rule {
