@@ -45,7 +45,7 @@ ruleset lab3 {
     rule respond_submit {
         select when web submit "#myForm"
         pre{
-            username = event:attr("first")+" - "+event:attr("last");
+            username = "first name: " + event:attr("first")+" last name: "+event:attr("last");
         }
         replace_inner("#main", "Hey #{username}");
         fired {
