@@ -11,7 +11,7 @@ ruleset lab3 {
         select when pageview ".*" setting ()
         pre {
             stuff = <<
-                <form id=myForm" onsubmit='return false'>
+                <form id="myForm" onsubmit='return false'>
                     <table>
                         <tr>
                             <td>
@@ -47,7 +47,7 @@ ruleset lab3 {
         pre{
             username = event:attr("first")+" - "+event:attr("last");
         }
-        replace_inner("#main", "Hell #{username}");
+        replace_inner("#main", "Hey #{username}");
         fired {
             set app:username username;
         }
