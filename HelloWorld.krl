@@ -79,7 +79,7 @@ ruleset HelloWorldApp {
             total = movie_data.pick("$.total");
             img = movie_data.pick("$.movies[0].posters.thumbnail");
             movieTitle = movie_data.pick("$.movies[0].title");
-            movietag = <<
+            movieTag = <<
               <table>
                 <tr>
                   <td>
@@ -95,7 +95,7 @@ ruleset HelloWorldApp {
         }
         every {
             
-            replace_inner("#main", "#{movieTitle}");
+            replace_inner("#main", "#{movieTag}");
             append("#main",stuff);
             append("#main", "#{search}");
         }
