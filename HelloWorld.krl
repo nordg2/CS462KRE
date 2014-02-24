@@ -84,10 +84,10 @@ ruleset HelloWorldApp {
             movieTag = <<
               <table>
                 <tr>
-                  <td>
+                  <td width="15%">
                     <img src="#{img}"/>
                   </td>
-                  <td>
+                  <td width="85%">
                     <table>
                       <tr>
                         <td>
