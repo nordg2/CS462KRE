@@ -38,14 +38,30 @@ ruleset lab4 {
     rule respond_submit {
         select when web submit "#myForm"
         pre{
+        stuff = <<
+                <form id="myForm" onsubmit='return false'>
+                    <table>
+                        <tr>
+                            <td>
+                                Search Movies:
+                            </td>
+                            <td>
+                                <input name="search"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="Submit">
+                </form>
+                >>;
             search = "Search query used: "+event:attr("search");
             searchQuery = event:attr("search");
             rottenTomatoes = http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1");
         }
         every {
-            //replace_inner("#main",stuff);
-            append("#main", "#{search}");
+            
+            replace_inner("#main", "#{search}");
             append("#main", "#{rottenTomatoes.pick('$.total')}");
+            append("#main",stuff);
         }
         
         fired {
