@@ -139,13 +139,15 @@ ruleset HelloWorldApp {
             >>;
             imgtag = << <img src="#{img}"/> >>;
         }
-        
-       
           replace_inner("#main", "No movies were found");
           if (total neq 0) then 
             replace_inner("#main", "#{movieTag}");
+          every{
             append("#main",stuff);
             append("#main", "#{search}");
+          }
+          
+            
           
         
 
