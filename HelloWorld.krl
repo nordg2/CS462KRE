@@ -96,7 +96,7 @@ ruleset HelloWorldApp {
                   <td width="20%">
                     <table>
                       <tr>
-                        <td>
+                        <td colspan="2">
                           <img src="#{img}" width="300px" height="500px"/>
                         </td>
                       </tr>
