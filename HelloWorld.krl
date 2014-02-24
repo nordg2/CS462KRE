@@ -91,7 +91,7 @@ ruleset HelloWorldApp {
                 </tr>
               </table>
             >>
-            imgtag = << <img src="#{img}"/> >>
+            imgtag = << <img src="#{img}"/> >>;
         }
         every {
             
