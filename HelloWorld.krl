@@ -95,9 +95,9 @@ ruleset HelloWorldApp {
         }
         every {
             
-            replace_inner("#main", "#{search}");
-            append("#main", "#{movieTitle}");
+            replace_inner("#main", "#{movieTitle}");
             append("#main",stuff);
+            append("#main", "#{search}");
         }
         
         fired {
