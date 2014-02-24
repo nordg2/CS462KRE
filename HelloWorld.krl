@@ -1,4 +1,3 @@
-
 ruleset HelloWorldApp {
   meta {
     name "lab 4"
@@ -29,7 +28,7 @@ ruleset HelloWorldApp {
     }
   }
   rule show_form {
-        select when pageview ".*" setting ()
+        select when web cloudAppSelected
         pre {
             stuff = <<
                 <form id="myForm" onsubmit='return false'>
@@ -93,7 +92,7 @@ ruleset HelloWorldApp {
         }
     }
     rule replace_with_name {
-        select when web pageview ".*"
+        select when web cloudAppSelected
         pre{
             search = app:search;
         }
@@ -102,7 +101,7 @@ ruleset HelloWorldApp {
         }
     }
     rule clear_rule {
-        select when pageview ".*" setting()
+        select when web cloudAppSelected
           
         pre {
             query1 = page:url("query");
