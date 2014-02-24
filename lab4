@@ -3,13 +3,14 @@ ruleset lab4 {
         name "lab4"
         author "BJ Nordgren"
         logging off
-    }
-    global {
-        datasource rotten_search <- "http://api.rottentomatoes.com/api/public/v1.0/movies.json?";
-    }
+    }    
     dispatch {
          //domain "exampley.com"
     }
+    global {
+        datasource rotten_data <- "http://api.rottentomatoes.com/api/public/v1.0/movies.json?";
+    }   //domain "exampley.com"
+    
     rule show_form {
         select when pageview ".*" setting ()
         pre {
@@ -96,4 +97,5 @@ ruleset lab4 {
         } 
     }
 }
+
 
