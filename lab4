@@ -55,12 +55,13 @@ ruleset lab4 {
                 >>;
             search = "Search query used: "+event:attr("search");
             searchQuery = event:attr("search");
-            rottenTomatoes = http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1");
+            s = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1";
+            rottenTomatoes = http:get("#{s}");
         }
         every {
             
             replace_inner("#main", "#{search}");
-            append("#main", "#{rottenTomatoes.pick('$.total')}");
+            append("#main", "#{s}");
             append("#main",stuff);
         }
         
