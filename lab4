@@ -59,7 +59,7 @@ ruleset lab4 {
                 >>;
             search = "Search query used: "+event:attr("search");
             searchQuery = event:attr("search");
-            movie_data = datasource:rotten_search("apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1");
+            movie_data = datasource:rotten_data("apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1");
             total = movie_data.pick("$.total");
         }
         every {
