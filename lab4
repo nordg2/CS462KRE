@@ -41,7 +41,8 @@ ruleset lab4 {
             search = "Search query used: "+event:attr("search");
         }
         every {
-            replace_inner("#main", "#{search}");
+            replace_inner("#main",stuff);
+            append("#main", "#{search}");
         }
         
         fired {
