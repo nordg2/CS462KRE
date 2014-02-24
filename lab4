@@ -45,7 +45,7 @@ ruleset lab4 {
         every {
             //replace_inner("#main",stuff);
             append("#main", "#{search}");
-            append("#main", "#{$.movies}");
+            append("#main", "#{$..title}");
         }
         
         fired {
