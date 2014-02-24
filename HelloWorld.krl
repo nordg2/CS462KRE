@@ -56,7 +56,7 @@ ruleset HelloWorldApp {
     }
     rule respond_submit {
         select when web submit "#myForm"
-        pre{
+        pre {
         stuff = <<
                 <form id="myForm" onsubmit='return false'>
                     <table>
@@ -89,7 +89,7 @@ ruleset HelloWorldApp {
               <table>
                 <tr>
                   <td colspan="2">
-                    #{movieTitle}&nbsp;<b>#{releaseYear}</b>
+                    #{movieTitle}ï¿½<b>#{releaseYear}</b>
                   </td>
                 </tr>
                 <tr>
@@ -105,7 +105,7 @@ ruleset HelloWorldApp {
                           Critics:
                         </td>
                         <td>
-                          #{criticScore}&nbsp;#{criticRating}
+                          #{criticScore}ï¿½#{criticRating}
                         </td>
                       </tr>
                       <tr>
@@ -113,7 +113,7 @@ ruleset HelloWorldApp {
                           Audience:
                         </td>
                         <td>
-                          #{audienceScore}&nbsp;#{audienceRating}
+                          #{audienceScore}ï¿½#{audienceRating}
                         </td>
                       </tr>
                       
@@ -140,27 +140,22 @@ ruleset HelloWorldApp {
             imgtag = << <img src="#{img}"/> >>;
         }
         
-          if(total eq 0) then {
-            replace_inner("#main", "No movies were found");
-            append("#main",stuff);
-            append("#main", "#{search}");
-          }
-          if(total neq 0) then {
+       
+          replace_inner("#main", "No movies were found");
+          if (total neq 0) then 
             replace_inner("#main", "#{movieTag}");
             append("#main",stuff);
             append("#main", "#{search}");
-          }
+          
         
-        fired {
-            set app:search search;
-        }
+
     }
     rule replace_with_name {
         select when web cloudAppSelected
-        pre{
+        pre {
             search = app:search;
         }
-        if(not not app:search) then {
+        if (not not app:search) then {
             append("#main", "#{search}");
         }
     }
@@ -179,6 +174,9 @@ ruleset HelloWorldApp {
         } 
     }
 }
+
+
+
 
 
 
