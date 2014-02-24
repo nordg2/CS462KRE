@@ -84,16 +84,17 @@ ruleset HelloWorldApp {
             movieTag = <<
               <table>
                 <tr>
-                  <td width="15%">
+                  <td colspan="2">
+                    #{movieTitle}&nbsp;<b>#{releaseYear}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="10%">
                     <img src="#{img}"/>
                   </td>
-                  <td width="85%">
+                  <td width="90%">
                     <table>
-                      <tr>
-                        <td>
-                          #{movieTitle}&nbsp;<b>#{releaseYear}</b>
-                        </td>
-                      </tr>
+                      
                       <tr>
                         <td>
                           Synopsis: #{synopsis}
