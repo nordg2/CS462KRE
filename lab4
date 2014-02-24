@@ -4,6 +4,9 @@ ruleset lab4 {
         author "BJ Nordgren"
         logging off
     }
+    global {
+        datasource rotten_search <- "http://api.rottentomatoes.com/api/public/v1.0/movies.json?";
+    }
     dispatch {
          //domain "exampley.com"
     }
@@ -55,13 +58,13 @@ ruleset lab4 {
                 >>;
             search = "Search query used: "+event:attr("search");
             searchQuery = event:attr("search");
-            s = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1";
-            rottenTomatoes = http:get("#{s}");
+            movie_data = datasource:rotten_serach("apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1");
+            total = movie_data.pick("$.total");
         }
         every {
             
             replace_inner("#main", "#{search}");
-            append("#main", "#{s}");
+            append("#main", "#{total}");
             append("#main",stuff);
         }
         
