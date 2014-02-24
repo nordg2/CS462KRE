@@ -1,6 +1,6 @@
 ruleset lab4 {
     meta {
-        name "notify example"
+        name "lab4"
         author "BJ Nordgren"
         logging off
     }
@@ -15,18 +15,10 @@ ruleset lab4 {
                     <table>
                         <tr>
                             <td>
-                                First Name:
+                                Search Movies:
                             </td>
                             <td>
-                                <input name="first"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Last Name:
-                            </td>
-                            <td>
-                                <input name="last"/>
+                                <input name="movies"/>
                             </td>
                         </tr>
                     </table>
@@ -34,10 +26,9 @@ ruleset lab4 {
                 </form>
                 >>;
         }
-        if(not app:username) then {
-            append("#main",stuff);
+            replace_inner("#main",stuff);
             watch("#myForm", "submit");
-        }
+        
         fired {
             last;
         }
@@ -45,20 +36,23 @@ ruleset lab4 {
     rule respond_submit {
         select when web submit "#myForm"
         pre{
-            username = "first name: " + event:attr("first")+" last name: "+event:attr("last");
+            search = "Search query used: "+event:attr("movies");
         }
-        replace_inner("#main", "#{username}");
+        every {
+            replace_inner("#main", "#{search}");
+        }
+        
         fired {
-            set app:username username;
+            set app:search search;
         }
     }
     rule replace_with_name {
         select when web pageview ".*"
         pre{
-            username = app:username;
+            search = app:search;
         }
-        if(not not app:username) then {
-            replace_inner("#main", "#{username}");
+        if(not not app:search) then {
+            append("#main", "#{search}");
         }
     }
     rule clear_rule {
@@ -69,9 +63,9 @@ ruleset lab4 {
             a1 = query1.extract(re/(clear([^&]*))/);
         }
        if a1[0] neq "" then
-             notify("Username Cleared","");
+             notify("search cleared","");
         fired {
-             clear app:username;
+             clear app:search;
              last
         } 
     }
