@@ -90,7 +90,7 @@ ruleset HelloWorldApp {
                   </td>
                 </tr>
               </table>
-            >>
+            >>;
             imgtag = << <img src="#{img}"/> >>;
         }
         every {
