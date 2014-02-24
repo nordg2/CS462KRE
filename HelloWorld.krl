@@ -1,17 +1,34 @@
-ruleset lab4 {
-    meta {
-        name "lab4"
-        author "BJ Nordgren"
-        logging off
-    }    
-    dispatch {
-         //domain "exampley.com"
+
+ruleset HelloWorldApp {
+  meta {
+    name "lab 4"
+    description <<
+      Hello World
+    >>
+    author "BJ Nordgren"
+    logging off
+    use module a169x701 alias CloudRain
+    use module a41x186  alias SquareTag
+  }
+  dispatch {
+  }
+  global {
+    datasource rotten_data <- "http://api.rottentomatoes.com/api/public/v1.0/movies.json?";
+  }
+  rule HelloWorld is active {
+    select when web cloudAppSelected
+    pre {
+      my_html = <<
+        <h5>Hello, world!</h5>
+        <div id="main"></div>
+      >>;
     }
-    global {
-        datasource rotten_data <- "http://api.rottentomatoes.com/api/public/v1.0/movies.json?";
-    }   //domain "exampley.com"
-    
-    rule show_form {
+    {
+      SquareTag:inject_styling();
+      CloudRain:createLoadPanel("Lab 4", {}, my_html);
+    }
+  }
+  rule show_form {
         select when pageview ".*" setting ()
         pre {
             stuff = <<
@@ -99,5 +116,6 @@ ruleset lab4 {
         } 
     }
 }
+
 
 
