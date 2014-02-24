@@ -43,7 +43,7 @@ ruleset lab4 {
             rottenTomatoes = http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1");
         }
         every {
-            replace_inner("#main",stuff);
+            //replace_inner("#main",stuff);
             append("#main", "#{search}");
             append("#main", "#{rottenTomatoes}");
         }
