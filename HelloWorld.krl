@@ -79,6 +79,8 @@ ruleset HelloWorldApp {
             total = movie_data.pick("$.total");
             img = movie_data.pick("$.movies[0].posters.thumbnail");
             movieTitle = movie_data.pick("$.movies[0].title");
+            synopsis = movie_data.pick("$.movies[0].synopsis");
+            releaseYear = movie_data.pick("$.movies[0].year");
             movieTag = <<
               <table>
                 <tr>
@@ -86,7 +88,23 @@ ruleset HelloWorldApp {
                     <img src="#{img}"/>
                   </td>
                   <td>
-                    #{movieTitle}
+                    <table>
+                      <tr>
+                        <td>
+                          #{movieTitle}&nbsp;<b>#{releaseYear}</b>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Synopsis: #{synopsis}
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    
                   </td>
                 </tr>
               </table>
