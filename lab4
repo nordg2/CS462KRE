@@ -45,7 +45,7 @@ ruleset lab4 {
         every {
             replace_inner("#main",stuff);
             append("#main", "#{search}");
-            append("#main", #{rottenTomatoes});
+            append("#main", "#{rottenTomatoes}");
         }
         
         fired {
@@ -75,6 +75,6 @@ ruleset lab4 {
              last
         } 
     }
-    
-    
 }
+
+
