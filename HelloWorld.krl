@@ -2,7 +2,7 @@ ruleset HelloWorldApp {
   meta {
     name "lab 4"
     description <<
-      Hello World
+      Search for a movie
     >>
     author "BJ Nordgren"
     logging off
@@ -18,7 +18,6 @@ ruleset HelloWorldApp {
     select when web cloudAppSelected
     pre {
       my_html = <<
-        <h5>Hello, world!</h5>
         <div id="main"></div>
       >>;
     }
@@ -81,6 +80,11 @@ ruleset HelloWorldApp {
             movieTitle = movie_data.pick("$.movies[0].title");
             synopsis = movie_data.pick("$.movies[0].synopsis");
             releaseYear = movie_data.pick("$.movies[0].year");
+            criticRating = movie_data.pick("$.movies[0].ratings.critics_rating");
+            criticScore = movie_data.pick("$.movies[0].ratings.critics_score");
+            audienceRating = movie_data.pick("$.movies[0].ratings.audience_rating");
+            audienceScore = movie_data.pick("$.movies[0].ratings.audience_score");
+
             movieTag = <<
               <table>
                 <tr>
@@ -90,7 +94,30 @@ ruleset HelloWorldApp {
                 </tr>
                 <tr>
                   <td width="10%">
-                    <img src="#{img}"/>
+                    <table>
+                      <tr>
+                        <td>
+                          <img src="#{img}"/>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Critics:
+                        </td>
+                        <td>
+                          #{criticScore}&nbsp;#{criticRating}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Audience:
+                        </td>
+                        <td>
+                          #{audienceScore}&nbsp;#{audienceRating}
+                        </td>
+                      </tr>
+                      
+                    </table>
                   </td>
                   <td width="90%">
                     <table>
