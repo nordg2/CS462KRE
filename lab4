@@ -45,7 +45,7 @@ ruleset lab4 {
         every {
             //replace_inner("#main",stuff);
             append("#main", "#{search}");
-            append("#main", "#{rottenTomatoes.pick("$..title"))}";
+            append("#main", "#{rottenTomatoes.pick('$.total')}");
         }
         
         fired {
@@ -76,7 +76,4 @@ ruleset lab4 {
         } 
     }
 }
-
-
-
 
