@@ -78,12 +78,25 @@ ruleset HelloWorldApp {
             movie_data = datasource:rotten_data("apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1");
             total = movie_data.pick("$.total");
             img = movie_data.pick("$.movies[0].posters.thumbnail");
+            movieTitle = movie_data.pick("$.movies[0].title");
+            movietag = <<
+              <table>
+                <tr>
+                  <td>
+                    <img src="#{img}"/>
+                  </td>
+                  <td>
+                    #{movieTitle}
+                  </td>
+                </tr>
+              </table>
+            >>
             imgtag = << <img src="#{img}"/> >>
         }
         every {
             
             replace_inner("#main", "#{search}");
-            append("#main", "#{imgtag}");
+            append("#main", "#{movieTitle}");
             append("#main",stuff);
         }
         
