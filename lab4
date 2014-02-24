@@ -18,7 +18,7 @@ ruleset lab4 {
                                 Search Movies:
                             </td>
                             <td>
-                                <input name="movies"/>
+                                <input name="search"/>
                             </td>
                         </tr>
                     </table>
@@ -26,8 +26,10 @@ ruleset lab4 {
                 </form>
                 >>;
         }
+        every {
             append("#main",stuff);
             watch("#myForm", "submit");
+        }
         
         fired {
             last;
@@ -36,7 +38,7 @@ ruleset lab4 {
     rule respond_submit {
         select when web submit "#myForm"
         pre{
-            search = "Search query used: "+event:attr("movies");
+            search = "Search query used: "+event:attr("search");
         }
         every {
             replace_inner("#main", "#{search}");
