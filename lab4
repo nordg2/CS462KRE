@@ -63,7 +63,7 @@ ruleset lab4 {
             a1 = query1.extract(re/(clear([^&]*))/);
         }
        if a1[0] neq "" then
-             notify("search cleared","");
+             notify("search cleared"," ");
         fired {
              clear app:search;
              last
