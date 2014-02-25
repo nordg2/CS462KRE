@@ -113,7 +113,7 @@ ruleset HelloWorldApp {
                           Audience:
                         </td>
                         <td>
-                          #{audienceScore}$nbsp;#{audienceRating}
+                          #{audienceScore}&nbsp;#{audienceRating}
                         </td>
                       </tr>
                       
