@@ -89,7 +89,7 @@ ruleset HelloWorldApp {
               <table>
                 <tr>
                   <td colspan="2">
-                    #{movieTitle}ï¿½<b>#{releaseYear}</b>
+                    #{movieTitle}&nbsp;<b>#{releaseYear}</b>
                   </td>
                 </tr>
                 <tr>
@@ -105,7 +105,7 @@ ruleset HelloWorldApp {
                           Critics:
                         </td>
                         <td>
-                          #{criticScore}ï¿½#{criticRating}
+                          #{criticScore}&nbsp;#{criticRating}
                         </td>
                       </tr>
                       <tr>
@@ -113,7 +113,7 @@ ruleset HelloWorldApp {
                           Audience:
                         </td>
                         <td>
-                          #{audienceScore}ï¿½#{audienceRating}
+                          #{audienceScore}$nbsp;#{audienceRating}
                         </td>
                       </tr>
                       
@@ -142,6 +142,47 @@ ruleset HelloWorldApp {
           if (total neq 0) then
             every { 
               replace_inner("#main", "#{movieTag}");
+              append("#main", "#{stuff}");
+              append("#main", "#{search}");
+          }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    rule respond_submit_error {
+        select when web submit "#myForm"
+        pre {
+        stuff = <<
+                <form id="myForm" onsubmit='return false'>
+                    <table>
+                        <tr>
+                            <td>
+                                Search Movies:
+                            </td>
+                            <td>
+                                <input name="search"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="Submit">
+                </form>
+                >>;
+            search = "Search query used: "+event:attr("search");
+            searchQuery = event:attr("search");
+            movie_data = datasource:rotten_data("apikey=293h6xsdm6mwebuud7bswzxa&q=#{searchQuery}&page_limit=10&page=1");
+            total = movie_data.pick("$.total");
+
+        }
+          if (total eq 0) then
+            every { 
+              replace_inner("#main", "Error: no matching movies");
               append("#main", "#{stuff}");
               append("#main", "#{search}");
           }
