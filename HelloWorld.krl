@@ -63,7 +63,10 @@ ruleset foursquare {
                     </table>
                 >>;
       }
-      append("#main", stuff);
+      notify("notify", "It worked!");
+      fired{
+        set app:name "name";
+      }
       
   }
   
