@@ -2,7 +2,7 @@ ruleset HelloWorldApp {
   meta {
     name "lab 5"
     description <<
-      Search for a movie
+      FourSquare
     >>
     author "BJ Nordgren"
     logging off
@@ -48,7 +48,13 @@ ruleset HelloWorldApp {
             last;
         }
     }
- 
+    rule process_fs_checkin {
+      select when foursquare checkin
+      pre {
+        var = << <div> yay! </div> >>;
+      }
+      appen("#main", var);
+    }
 
 }
 
