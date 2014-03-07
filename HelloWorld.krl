@@ -1,6 +1,6 @@
 ruleset HelloWorldApp {
   meta {
-    name "lab 4"
+    name "lab 5"
     description <<
       Search for a movie
     >>
@@ -23,26 +23,20 @@ ruleset HelloWorldApp {
     }
     {
       SquareTag:inject_styling();
-      CloudRain:createLoadPanel("Lab 4", {}, my_html);
+      CloudRain:createLoadPanel("Lab 5", {}, my_html);
     }
   }
   rule show_form {
         select when web cloudAppSelected
         pre {
             stuff = <<
-                <form id="myForm" onsubmit='return false'>
                     <table>
                         <tr>
                             <td>
-                                Search Movies:
-                            </td>
-                            <td>
-                                <input name="search"/>
+                                FourSquare!
                             </td>
                         </tr>
                     </table>
-                    <input type="submit" value="Submit">
-                </form>
                 >>;
         }
         every {
