@@ -34,7 +34,7 @@ ruleset foursquare {
                     <table>
                         <tr>
                             <td>
-                                FourSquare! #{name}
+                                FourSquare! #{name} #{venue} #{city} #{shout} #{createdAt} 
                             </td>
                         </tr>
                     </table>
@@ -53,12 +53,18 @@ ruleset foursquare {
       select when foursquare checkin
       pre {
       // decode the JSON to get the data structure
-      checkin = event:attr("checkin").decode(); 
+        checkin = event:attr("checkin").decode(); 
+        
     
       }
       noop();
       fired{
         set app:name1 "name1";
+        set app:venue checkin.pick("$..venue.name");
+        set app:city checkin.pick("$..location.city");
+        set app:shout checkin.pick("$..shout", true).head();
+        set app:createdAt checkin.pick("$..createdAt");
+         
       }
       
   }
