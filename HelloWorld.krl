@@ -29,7 +29,7 @@ ruleset foursquare {
   rule show_form {
         select when web cloudAppSelected
         pre {
-            name =  app:name;
+            name =  app:name1;
             stuff = <<
                     <table>
                         <tr>
@@ -53,12 +53,12 @@ ruleset foursquare {
       select when foursquare checkin
       pre {
       // decode the JSON to get the data structure
-      //checkin = event:attr("checkin").decode(); 
+      checkin = event:attr("checkin").decode(); 
     
       }
       noop();
       fired{
-        set app:name "name1";
+        set app:name1 "name1";
       }
       
   }
