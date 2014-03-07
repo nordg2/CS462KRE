@@ -52,14 +52,16 @@ ruleset HelloWorldApp {
       select when foursquare checkin
       pre {
         var = << <div> yay! </div> >>;
+        
       }
-      appen("#main", var);
+      append("#main", var);
+      always {
+        set app:name 'name';
+        set app:city 'city';
+        set app:shout 'shout';
+        set app:createdAt 'createdAt';
+      }
+     
     }
 
 }
-
-
-
-
-
-
