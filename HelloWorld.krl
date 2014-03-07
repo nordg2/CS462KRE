@@ -37,8 +37,27 @@ ruleset foursquare {
                     <table>
                         <tr>
                             <td>
-                                FourSquare! #{venue} #{city} #{shout} #{createdAt} 
+                                Venue:
                             </td>
+                            <td> #{venue}
+                        </tr>
+                        <tr>
+                            <td>
+                                City: 
+                            </td>
+                            <td> #{city}
+                        </tr>
+                        <tr>
+                            <td>
+                                Shout: 
+                            </td>
+                            <td> #{shout}
+                        </tr>
+                        <tr>
+                            <td>
+                                CreatedAt:  
+                            </td>
+                            <td> #{createdAt}
                         </tr>
                     </table>
                 >>;
