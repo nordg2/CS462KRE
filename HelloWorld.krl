@@ -58,7 +58,7 @@ ruleset foursquare {
       }
       noop();
       fired{
-        set app:name "name";
+        set app:name "name1";
       }
       
   }
