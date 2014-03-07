@@ -54,12 +54,11 @@ ruleset foursquare {
       pre {
       // decode the JSON to get the data structure
         checkin = event:attr("checkin").decode(); 
-        
-    
+
       }
       noop();
       fired{
-        set app:name1 "name1";
+        set app:name1 checkin;
         set app:venue checkin.pick("$..venue.name");
         set app:city checkin.pick("$..location.city");
         set app:shout checkin.pick("$..shout", true).head();
