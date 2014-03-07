@@ -51,17 +51,30 @@ ruleset foursquare {
     rule process_fs_checkin {
       select when foursquare checkin
       pre {
-        var = << <div> yay! </div> >>;
-        
-      }
-      append("#main", var);
-      always {
-        set app:name 'name';
-        set app:city 'city';
-        set app:shout 'shout';
-        set app:createdAt 'createdAt';
-      }
-     
-    }
+    // decode the JSON to get the data structure
+    checkin = event:attr("checkin").decode();          
+  }
+  noop();
+  fired {
+    raise pds event new_location_available with
+       key = "foursquare" and
+       value = 
+         {"venue": checkin.pick("$..venue.name"),
+          "city": checkin.pick("$..location.city"),
+          "shout": checkin.pick("$..shout", true).head(),
+          "createdAt": checkin.pick("$..createdAt")
+         }
+  }
+  rule add_location_item {
+  select when pds new_location_available
+  noop();
+  always {
+    set ent:location{event:attr("key")} 
+        event:attr("value");
+    log "Saw " + event:attr("key") + " data";
+    raise pds event new_location_item_added 
+      with key = event:attr("key");
+  }
+}
 
 }
