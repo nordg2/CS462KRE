@@ -29,12 +29,15 @@ ruleset foursquare {
   rule show_form {
         select when web cloudAppSelected
         pre {
-            name =  app:name1;
+            venue = app:venue;
+            city = app:city;
+            shout = app:shout;
+            createdAt = app:createdAt;
             stuff = <<
                     <table>
                         <tr>
                             <td>
-                                FourSquare! #{name} #{venue} #{city} #{shout} #{createdAt} 
+                                FourSquare! #{venue} #{city} #{shout} #{createdAt} 
                             </td>
                         </tr>
                     </table>
@@ -58,7 +61,6 @@ ruleset foursquare {
       }
       noop();
       fired{
-        set app:name1 checkin;
         set app:venue checkin.pick("$..venue.name");
         set app:city checkin.pick("$..location.city");
         set app:shout checkin.pick("$..shout", true).head();
