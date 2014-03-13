@@ -21,8 +21,9 @@ ruleset location_data {
   rule HelloWorld is active {
     select when web cloudAppSelected
     pre {
+    venue = app:location.venue;
       my_html = <<
-        <div id="main">#{location.venue}</div>
+        <div id="main">#{venue}</div>
       >>;
     }
     {
