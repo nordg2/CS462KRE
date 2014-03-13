@@ -22,7 +22,7 @@ ruleset location_data {
     select when web cloudAppSelected
     pre {
       my_html = <<
-        <div id="main">${location.venue}</div>
+        <div id="main">#{location.venue}</div>
       >>;
     }
     {
