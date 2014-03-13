@@ -21,7 +21,7 @@ ruleset location_data {
   rule HelloWorld is active {
     select when web cloudAppSelected
     pre {
-    venue = app:location->venue;
+    venue = app:location.pick("$..venue");
       my_html = <<
         <div id="main">#{venue}</div>
       >>;
