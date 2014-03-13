@@ -82,7 +82,8 @@ ruleset foursquare {
           "createdAt": checkin.pick("$..createdAt")
          } ;
       }
-      noop();
+      send_directive("checkin") 
+        with body = data_map;
       fired{
         set app:venue checkin.pick("$..venue.name");
         set app:city checkin.pick("$..location.city");
