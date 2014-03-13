@@ -76,7 +76,7 @@ ruleset foursquare {
       pre {
       // decode the JSON to get the data structure
         checkin = event:attr("checkin").decode(); 
-        v = {"venue": checkin.pick("$..venue.name"),
+        data_map = {"venue": checkin.pick("$..venue.name"),
           "city": checkin.pick("$..location.city"),
           "shout": checkin.pick("$..shout", true).head(),
           "createdAt": checkin.pick("$..createdAt")
@@ -88,7 +88,9 @@ ruleset foursquare {
         set app:city checkin.pick("$..location.city");
         set app:shout checkin.pick("$..shout", true).head();
         set app:createdAt checkin.pick("$..createdAt");
-        raise pds event new_location_data with key = "fs_checkin" and value = v;
+        raise explicit event new_location_data for b505195x7
+                with key = "fs_checkin"
+                and value = data_map;
          
       }
       
