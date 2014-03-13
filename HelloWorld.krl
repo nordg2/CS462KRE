@@ -76,7 +76,8 @@ ruleset foursquare {
       pre {
       // decode the JSON to get the data structure
         checkin = event:attr("checkin").decode(); 
-
+        k = "blah";
+        v = "vlah";
       }
       noop();
       fired{
