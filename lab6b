@@ -1,0 +1,30 @@
+ruleset location_data {
+  meta {
+    name "lab 6"
+    description <<
+      FourSquare
+    >>
+    author "BJ Nordgren"
+    provides get_location_data
+    logging off
+
+  }
+  dispatch {
+  }
+  global {
+    get_location_data = function (k) {
+      app:location{k};
+    };
+  }
+  rule add_location_item {
+    select when explicit new_location_data
+    noop();
+    always {
+      set app:location{event:attr("key")} 
+          event:attr("value");
+      log "Saw " + event:attr("key") + " data";
+      
+    }
+  }
+  
+}
