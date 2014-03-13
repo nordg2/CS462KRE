@@ -7,6 +7,8 @@ ruleset location_data {
     author "BJ Nordgren"
     provides get_location_data
     logging off
+    use module a169x701 alias CloudRain
+    use module a41x186  alias SquareTag
 
   }
   dispatch {
@@ -15,6 +17,18 @@ ruleset location_data {
     get_location_data = function (k) {
       app:location{k};
     };
+  }
+  rule HelloWorld is active {
+    select when web cloudAppSelected
+    pre {
+      my_html = <<
+        <div id="main">${location.venue}</div>
+      >>;
+    }
+    {
+      SquareTag:inject_styling();
+      CloudRain:createLoadPanel("Lab 6", {}, my_html);
+    }
   }
   rule add_location_item {
     select when explicit new_location_data
