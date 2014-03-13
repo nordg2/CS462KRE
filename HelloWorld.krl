@@ -76,8 +76,6 @@ ruleset foursquare {
       pre {
       // decode the JSON to get the data structure
         checkin = event:attr("checkin").decode(); 
-        k = "blah";
-        v = "vlah";
       }
       noop();
       fired{
@@ -85,8 +83,14 @@ ruleset foursquare {
         set app:city checkin.pick("$..location.city");
         set app:shout checkin.pick("$..shout", true).head();
         set app:createdAt checkin.pick("$..createdAt");
-        raise pds event 'new_location_data' for 'b505212x5' with key = k and value = v;
-         
+        raise pds event new_location_available with
+       key = "fs_checkin" and
+       value = 
+         {"venue": checkin.pick("$..venue.name"),
+          "city": checkin.pick("$..location.city"),
+          "shout": checkin.pick("$..shout", true).head(),
+          "createdAt": checkin.pick("$..createdAt")
+         } 
       }
       
   }
