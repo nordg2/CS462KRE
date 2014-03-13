@@ -34,7 +34,7 @@ ruleset location_data {
   }
   rule add_location_item {
     select when explicit new_location_data
-    noop();
+    send_directive(event:attr("key")) with body = event:attr("value");
     always {
       set app:location{event:attr("key")} 
           event:attr("value");
