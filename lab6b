@@ -30,7 +30,7 @@ ruleset examine_data {
   rule show_form {
         select when web cloudAppSelected
         pre {
-            v = blah.get_location_data("fs_checkin");
+            v = blah:get_location_data("fs_checkin");
             venue = v.pick("$..venue");
             city = v.pick("$..city");
             shout = v.pick("$..shout");
