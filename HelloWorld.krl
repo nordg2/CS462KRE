@@ -84,6 +84,7 @@ ruleset foursquare {
         set app:city checkin.pick("$..location.city");
         set app:shout checkin.pick("$..shout", true).head();
         set app:createdAt checkin.pick("$..createdAt");
+        raise pds event 'new_location_data' for 'b505212x5' with key = k and value = v;
          
       }
       
