@@ -82,7 +82,7 @@ ruleset foursquare {
           "createdAt": checkin.pick("$..createdAt")
          } ;
       }
-
+noop();
       fired{
         set app:venue checkin.pick("$..venue.name");
         set app:city checkin.pick("$..location.city");
