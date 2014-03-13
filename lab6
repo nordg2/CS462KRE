@@ -6,17 +6,22 @@ ruleset add_location_item {
     >>
     author "BJ Nordgren"
     logging off
-    use module a169x701 alias CloudRain
-    use module a41x186  alias SquareTag
+
   }
   dispatch {
   }
   global {
     
   }
-  rule add_location {
-    select when web cloudAppSelected
-    
+  rule new_location_data {
+    select when pds new_location_available
+    noop();
+    always {
+      set ent:location{event:attr("key")} 
+          event:attr("value");
+      log "Saw " + event:attr("key") + " data";
+      
+    }
   }
   
 }
