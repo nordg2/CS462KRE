@@ -1,30 +1,77 @@
-ruleset location_data {
+ruleset examine_data {
   meta {
-    name "lab 6"
+    name "lab 5"
     description <<
       FourSquare
     >>
     author "BJ Nordgren"
-    provides get_location_data
     logging off
-
+    use module a169x701 alias CloudRain
+    use module a41x186  alias SquareTag
+    use module b505212x5 alias blah
   }
   dispatch {
   }
   global {
-    get_location_data = function (k) {
-      app:location{k};
-    };
+    datasource rotten_data <- "http://api.rottentomatoes.com/api/public/v1.0/movies.json?";
   }
-  rule add_location_item {
-    select when explicit new_location_data
-    noop();
-    always {
-      set app:location{event:attr("key")} 
-          event:attr("value");
-      log "Saw " + event:attr("key") + " data";
-      
+  rule HelloWorld is active {
+    select when web cloudAppSelected
+    pre {
+      my_html = <<
+        <div id="main"></div>
+      >>;
+    }
+    {
+      SquareTag:inject_styling();
+      CloudRain:createLoadPanel("Lab 6", {}, my_html);
     }
   }
+  rule show_form {
+        select when web cloudAppSelected
+        pre {
+            v = blah.get_location_data("fs_checkin");
+            venue = v.pick("$..venue");
+            city = v.pick("$..city");
+            shout = v.pick("$..shout");
+            createdAt = v.pick("$..createdAt");
+            stuff = <<
+                    <table>
+                        <tr>
+                            <td>
+                                Venue:
+                            </td>
+                            <td> #{venue}
+                        </tr>
+                        <tr>
+                            <td>
+                                City: 
+                            </td>
+                            <td> #{city}
+                        </tr>
+                        <tr>
+                            <td>
+                                Shout: 
+                            </td>
+                            <td> #{shout}
+                        </tr>
+                        <tr>
+                            <td>
+                                CreatedAt:  
+                            </td>
+                            <td> #{createdAt}
+                        </tr>
+                    </table>
+                >>;
+        }
+        every {
+            append("#main",stuff);
+            watch("#myForm", "submit");
+        }
+        
+        fired {
+            last;
+        }
+    }
   
 }
