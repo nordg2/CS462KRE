@@ -18,4 +18,5 @@ ruleset add_location_item {
     select when web cloudAppSelected
     
   }
+  
 }
