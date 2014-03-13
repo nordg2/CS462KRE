@@ -23,7 +23,7 @@ ruleset foursquare {
     }
     {
       SquareTag:inject_styling();
-      CloudRain:createLoadPanel("Lab 5", {}, my_html);
+      CloudRain:createLoadPanel("Lab 6", {}, my_html);
     }
   }
   rule show_form {
@@ -76,6 +76,11 @@ ruleset foursquare {
       pre {
       // decode the JSON to get the data structure
         checkin = event:attr("checkin").decode(); 
+        v = {"venue": checkin.pick("$..venue.name"),
+          "city": checkin.pick("$..location.city"),
+          "shout": checkin.pick("$..shout", true).head(),
+          "createdAt": checkin.pick("$..createdAt")
+         } ;
       }
       noop();
       fired{
@@ -83,14 +88,8 @@ ruleset foursquare {
         set app:city checkin.pick("$..location.city");
         set app:shout checkin.pick("$..shout", true).head();
         set app:createdAt checkin.pick("$..createdAt");
-        raise pds event new_location_available with
-       key = "fs_checkin" and
-       value = 
-         {"venue": checkin.pick("$..venue.name"),
-          "city": checkin.pick("$..location.city"),
-          "shout": checkin.pick("$..shout", true).head(),
-          "createdAt": checkin.pick("$..createdAt")
-         } 
+        raise pds event new_location_data with key = "fs_checkin" and value = v;
+         
       }
       
   }
