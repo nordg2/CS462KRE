@@ -5,6 +5,7 @@ ruleset location_data {
       FourSquare
     >>
     author "BJ Nordgren"
+    configure using c = "Hello"
     provides get_location_data
     logging off
     use module a169x701 alias CloudRain
