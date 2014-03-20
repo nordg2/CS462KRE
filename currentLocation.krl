@@ -114,14 +114,14 @@ ruleset location {
         
         
         data_map = {
-          "lat": lat,
-          "long": long
+          "lat": cur_lat,
+          "long": cur_long
          } ;
       }
     send_directive("Current Location") with body = data_map;
       fired {
-        raise explicit event location_nearby for b505212x5 if dE <= 5;
-        raise explicit event location_far for b505212x5 if dE > 5;
+        raise explicit event location_nearby if dE <= 5;
+        raise explicit event location_far if dE > 5;
       }
       
   }
