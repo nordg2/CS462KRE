@@ -94,9 +94,9 @@ ruleset foursquare {
         data_map = {"venue": checkin.pick("$..venue.name"),
           "city": checkin.pick("$..location.city"),
           "shout": checkin.pick("$..shout", true).head(),
-          "createdAt": checkin.pick("$..createdAt")
-          "lat": checkin.pick("$..lat");
-          "long": checkin.pick("$..lng");
+          "createdAt": checkin.pick("$..createdAt"),
+          "lat": checkin.pick("$..lat"),
+          "long": checkin.pick("$..lng")
          } ;
       }
 send_directive("checkin") with body = data_map;
