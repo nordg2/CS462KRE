@@ -19,7 +19,7 @@ ruleset location {
     select when web cloudAppSelected
     pre {
       my_html = <<
-        <div id="main"></div>
+        <div id="main">test!</div>
       >>;
     }
     {
@@ -120,8 +120,8 @@ ruleset location {
       }
     send_directive("Current Location") with body = data_map;
       fired {
-        raise explicit event location_nearby if dE <= 5;
-        raise explicit event location_far if dE > 5;
+        raise explicit event location_nearby for b505212x8 if dE <= 5;
+        raise explicit event location_far for b505212x8 if dE > 5;
       }
       
   }
