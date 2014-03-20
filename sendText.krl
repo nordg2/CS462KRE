@@ -5,13 +5,14 @@ ruleset location_data {
       send a twillio location text
     >>
     author "BJ Nordgren"
-    use module a169x701 alias CloudRain
-    use module a41x186  alias SquareTag
     key twilio {"account_sid" : "AC41296657fe2c0daad065ecf124973366",
                     "auth_token"  : "0b233e07bb712fdc8e67574cc5d9b3" 
         }
          
-        use module a8x115 alias twilio with twiliokeys = keys:twilio();
+    use module a8x115 alias twilio with twiliokeys = keys:twilio();
+    use module a169x701 alias CloudRain
+    use module a41x186  alias SquareTag
+    
         logging off
   }
   dispatch {
