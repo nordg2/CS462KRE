@@ -19,7 +19,18 @@ ruleset location_data {
   global{
   
   }
-
+rule HelloWorld is active {
+    select when web cloudAppSelected
+    pre {
+      my_html = <<
+        <div id="main">show!!</div>
+      >>;
+    }
+    {
+      SquareTag:inject_styling();
+      CloudRain:createLoadPanel("Lab 6", {}, my_html);
+    }
+  }
   rule location_nearby {
     select when explicit location_nearby
     {
