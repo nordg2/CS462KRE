@@ -32,7 +32,7 @@ rule HelloWorld is active {
       CloudRain:createLoadPanel("Lab 6", {}, my_html);
     }
   }
-  rule location_nearby {
+  rule location_nearby is active{
     select when explicit location_nearby
     {
       send_directive("location is near");
@@ -40,7 +40,7 @@ rule HelloWorld is active {
     }
   }
   
-  rule location_far {
+  rule location_far is active{
     select when explicit location_far
     {
       send_directive("location is far");
