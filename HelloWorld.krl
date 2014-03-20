@@ -33,6 +33,7 @@ ruleset foursquare {
             city = app:city;
             shout = app:shout;
             createdAt = app:createdAt;
+            
             stuff = <<
                     <table>
                         <tr>
@@ -80,14 +81,18 @@ ruleset foursquare {
           "city": checkin.pick("$..location.city"),
           "shout": checkin.pick("$..shout", true).head(),
           "createdAt": checkin.pick("$..createdAt")
+          "lat": checkin.pick("$..lat");
+          "long": checkin.pick("$..lng");
          } ;
       }
 send_directive("checkin") with body = data_map;
-      fired{
+      fired {
         set app:venue checkin.pick("$..venue.name");
         set app:city checkin.pick("$..location.city");
         set app:shout checkin.pick("$..shout", true).head();
         set app:createdAt checkin.pick("$..createdAt");
+        set app:lat checkin.pick("$..lat");
+        set app:long checking.pick("$..long");
         raise explicit event new_location_data for b505212x5
                 with key = "fs_checkin"
                 and value = data_map;
