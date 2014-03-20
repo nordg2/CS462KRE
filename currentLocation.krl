@@ -98,7 +98,7 @@ ruleset location {
         checkin_long = fs_checkin.pick("$..long");
         
         r90   = math:pi()/2;      
-        rEm   = 6378;         // radius of the Earth in miles
+        rEm   = 3963.1676;         // radius of the Earth in miles
          
         // convert co-ordinates to radians
         rlata = math:deg2rad(cur_lat);
