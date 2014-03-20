@@ -33,6 +33,8 @@ ruleset foursquare {
             city = app:city;
             shout = app:shout;
             createdAt = app:createdAt;
+            lat = app:lat;
+            long = app:long;
             
             stuff = <<
                     <table>
@@ -53,6 +55,18 @@ ruleset foursquare {
                                 Shout: 
                             </td>
                             <td> #{shout}
+                        </tr>
+                        <tr>
+                            <td>
+                                lat:  
+                            </td>
+                            <td> #{lat}
+                        </tr>
+                        <tr>
+                            <td>
+                                long:  
+                            </td>
+                            <td> #{long}
                         </tr>
                         <tr>
                             <td>
