@@ -6,7 +6,7 @@ ruleset location_data {
     >>
     author "BJ Nordgren"
     key twilio {"account_sid" : "AC41296657fe2c0daad065ecf124973366",
-                    "auth_token"  : "0b233e07bb712fdc8e67574cc5d9b3" 
+                    "auth_token"  : "0b233e07bb712fdc8e67574cc5d9b351" 
         }
          
     use module a8x115 alias twilio with twiliokeys = keys:twilio()
