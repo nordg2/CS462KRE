@@ -106,7 +106,7 @@ send_directive("checkin") with body = data_map;
         set app:shout checkin.pick("$..shout", true).head();
         set app:createdAt checkin.pick("$..createdAt");
         set app:lat checkin.pick("$..lat");
-        set app:long checking.pick("$..long");
+        set app:long checking.pick("$..lng");
         raise explicit event new_location_data for b505212x5
                 with key = "fs_checkin"
                 and value = data_map;
