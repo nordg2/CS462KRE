@@ -116,7 +116,7 @@ ruleset location {
         data_map = {
           "lat": cur_lat,
           "long": cur_long
-         } ;
+         };
       }
     send_directive("Current Location") with body = data_map;
       fired {
