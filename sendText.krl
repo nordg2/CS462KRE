@@ -27,7 +27,7 @@ ruleset location_data {
 
     {
       send_directive("location is near");
-      twilio:send_sms(8014001952, "3852194405", "nearby!");
+      twilio:send_sms("8014001952", "3852194405", "nearby!");
     }
   }
   
@@ -35,7 +35,7 @@ ruleset location_data {
     select when explicit location_far
     {
       send_directive("location is far");
-      twilio:send_sms(8014001952, "3852194405", "far far away!");
+      twilio:send_sms("8014001952", "3852194405", "far far away!");
     }
   }
   
