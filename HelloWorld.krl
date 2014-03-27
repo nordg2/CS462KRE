@@ -12,7 +12,10 @@ ruleset foursquare {
   dispatch {
   }
   global {
-    datasource rotten_data <- "http://api.rottentomatoes.com/api/public/v1.0/movies.json?";
+    subscribers = {
+    "cid": "1475E6BA-B5C6-11E3-A7BC-5060D61CF0AC",
+    "cid": "314FB70C-B5C6-11E3-8EE4-3E1B293232C8"
+    };
   }
   rule HelloWorld is active {
     select when web cloudAppSelected
@@ -86,6 +89,19 @@ ruleset foursquare {
             last;
         }
     }
+    rule dispatch {
+      select when explicit new_location_data
+        foreach subscribers setting (subscriber)
+          
+          event:send(subscriber,"schedule","inquiry")
+              with attrs = {"key": event:attr("key"),
+                            "data_map": event:attr("value")
+                            };
+          
+          always {
+            raise explicit event subscribers_notified on final
+          }
+    }
     rule process_fs_checkin {
       select when foursquare checkin
       pre {
@@ -107,7 +123,7 @@ send_directive("checkin") with body = data_map;
         set app:createdAt checkin.pick("$..createdAt");
         set app:lat checkin.pick("$..lat");
         set app:long checkin.pick("$..lng");
-        raise explicit event new_location_data for b505212x5
+        raise explicit event new_location_data
                 with key = "fs_checkin"
                 and value = data_map;
          
