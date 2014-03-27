@@ -13,8 +13,8 @@ ruleset foursquare {
   }
   global {
     subscribers = {
-    "cid": "1475E6BA-B5C6-11E3-A7BC-5060D61CF0AC",
-    "cid": "314FB70C-B5C6-11E3-8EE4-3E1B293232C8"
+     {"cid": "1475E6BA-B5C6-11E3-A7BC-5060D61CF0AC"},
+     {"cid": "314FB70C-B5C6-11E3-8EE4-3E1B293232C8"}
     };
   }
   rule HelloWorld is active {
@@ -93,14 +93,10 @@ ruleset foursquare {
       select when explicit new_location_data
         foreach subscribers setting (subscriber)
           
-          event:send(subscriber,"schedule","inquiry")
+          event:send(subscriber,"blah1","inquiry")
               with attrs = {"key": event:attr("key"),
                             "data_map": event:attr("value")
                             };
-          
-          always {
-            raise explicit event subscribers_notified on final
-          }
     }
     rule process_fs_checkin {
       select when foursquare checkin
