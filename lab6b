@@ -27,6 +27,18 @@ ruleset examine_data {
       CloudRain:createLoadPanel("Lab 6", {}, my_html);
     }
   }
+    rule my_rule {
+      select when schedule inquiry
+      pre {
+        data_map = event:attr("data_map");
+      }
+      noop();
+      post {
+        set app:data_map = data_map;
+      }
+        
+      
+    }
   rule show_form {
         select when web cloudAppSelected
         pre {
