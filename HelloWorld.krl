@@ -94,9 +94,7 @@ ruleset foursquare {
         foreach subscribers setting (subscriber)
           
           event:send(subscriber,"blah1","inquiry")
-              with attrs = {"key": event:attr("key"),
-                            "data_map": event:attr("value")
-                            };
+              with attrs = {"data_map": event:attr("value").encode()};
     }
     rule process_fs_checkin {
       select when foursquare checkin
