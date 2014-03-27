@@ -30,7 +30,7 @@ ruleset examine_data {
   rule my_rule {
     select when blah1 inquiry
     pre {
-      data = event:attr("data_map");
+      data = event:attr("data_map").decode();
     }
     noop();
     fired {
