@@ -12,10 +12,10 @@ ruleset foursquare {
   dispatch {
   }
   global {
-    subscribers = {
+    subscribers = [
      {"cid": "1475E6BA-B5C6-11E3-A7BC-5060D61CF0AC"},
      {"cid": "314FB70C-B5C6-11E3-8EE4-3E1B293232C8"}
-    };
+    ];
   }
   rule HelloWorld is active {
     select when web cloudAppSelected
